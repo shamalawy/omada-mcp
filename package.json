@@ -1,0 +1,60 @@
+{
+  "name": "omada-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the TP-Link Omada Open API. Exposes every Open API operation (2,450+) generated from the controller's OpenAPI spec.",
+  "author": "Shereif ElHamalawy (https://github.com/shamalawy)",
+  "license": "MIT",
+  "homepage": "https://shamalawy.github.io/omada-mcp/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shamalawy/omada-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shamalawy/omada-mcp/issues"
+  },
+  "type": "module",
+  "bin": {
+    "omada-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "spec",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "test": "tsx --test test/*.test.ts",
+    "update-spec": "tsx scripts/update-spec.ts",
+    "docs:gen": "tsx scripts/gen-docs.ts",
+    "docs:dev": "npm run docs:gen && vitepress dev docs",
+    "docs:build": "npm run docs:gen && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "omada",
+    "tp-link",
+    "openapi",
+    "sdn",
+    "network"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "undici": "^6.29.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitepress": "^2.0.0-alpha.21"
+  }
+}

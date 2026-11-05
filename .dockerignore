@@ -1,0 +1,9 @@
+node_modules
+dist
+docs
+test
+scripts
+.github
+.env
+.scratch
+.code-review-graph

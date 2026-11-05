@@ -1,0 +1,37 @@
+:root {
+  --vp-c-brand-1: #0e7c86;
+  --vp-c-brand-2: #12939f;
+  --vp-c-brand-3: #16a8b6;
+  --vp-c-brand-soft: rgba(14, 124, 134, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #3cc4d0;
+  --vp-c-brand-2: #2bb0bc;
+  --vp-c-brand-3: #1f9aa5;
+  --vp-c-brand-soft: rgba(60, 196, 208, 0.16);
+}
+
+/* HTTP method badges in the API reference */
+.method {
+  display: inline-block;
+  min-width: 4.2em;
+  padding: 0 0.5em;
+  border-radius: 4px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1.8;
+  text-align: center;
+  color: #fff;
+}
+.method-get { background: #2f7d32; }
+.method-post { background: #1565c0; }
+.method-put { background: #8e5b00; }
+.method-patch { background: #6a3fa0; }
+.method-delete { background: #b3261e; }
+
+.vp-doc details > summary {
+  cursor: pointer;
+  color: var(--vp-c-text-2);
+}
