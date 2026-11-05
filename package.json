@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/node": "^20.19.43",
     "tsx": "^4.23.15",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vitepress": "^2.0.0-alpha.21"
   }
 }
