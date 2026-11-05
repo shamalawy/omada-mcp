@@ -52,7 +52,7 @@
     "undici": "^6.29.1"
   },
   "devDependencies": {
-    "@types/node": "^20.19.43",
+    "@types/node": "^26.6.6",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vitepress": "^2.0.0-alpha.21"
