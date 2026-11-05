@@ -6,7 +6,8 @@
  *
  * Set OMADA_VERIFY_SSL=false for a self-signed controller certificate.
  */
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
+import { isDeepStrictEqual } from "node:util";
 import { fileURLToPath } from "node:url";
 import { Agent, fetch } from "undici";
 
@@ -20,5 +21,13 @@ if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
 const doc = (await res.json()) as { paths?: Record<string, Record<string, unknown>> };
 if (!doc.paths) throw new Error(`${url} did not return an OpenAPI document`);
 const ops = Object.values(doc.paths).reduce((n, item) => n + Object.keys(item).length, 0);
+
+// The server returns keys in a different order between requests; only write
+// when the content really changed, so the weekly job doesn't open empty PRs.
+const current = await readFile(out, "utf8").then(JSON.parse, () => undefined);
+if (isDeepStrictEqual(current, doc)) {
+  console.log(`Spec unchanged (${ops} operations).`);
+  process.exit(0);
+}
 await writeFile(out, JSON.stringify(doc));
 console.log(`Saved ${ops} operations from ${url} to ${out}`);
