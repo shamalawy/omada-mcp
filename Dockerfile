@@ -1,11 +1,11 @@
-FROM node:24-alpine AS build
+FROM node:25-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json tsconfig.json ./
 RUN npm ci --ignore-scripts
 COPY src ./src
 RUN npm run build && npm prune --omit=dev
 
-FROM node:24-alpine
+FROM node:25-alpine
 LABEL org.opencontainers.image.title="omada-mcp" \
       org.opencontainers.image.description="MCP server for the TP-Link Omada Open API" \
       org.opencontainers.image.source="https://github.com/shamalawy/omada-mcp" \
